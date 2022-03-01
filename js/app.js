@@ -11,11 +11,11 @@ const searchMobile = () => {
         .then(data => displaySearchResult(data.data));
 }
 const displaySearchResult = (phones) => {
-    console.log(phones);
+    // console.log(phones);
     const searchResult = document.getElementById('search-result');
     // console.log(searchResult);
-    const first20Data = phones.slice(0, 20);
-    console.log(first20Data);
+    // const first20Data = phones.slice(0, 20);
+    // console.log(first20Data);
     phones.forEach(phone => {
         console.log(phone);
         const div = document.createElement('div');
@@ -24,14 +24,14 @@ const displaySearchResult = (phones) => {
           <div class="card h-100">
              <img src="${phone.image}" class="card-img-top" alt="...">
              <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.</p>
-             </div>
-      </div>
-          `;
+                 <h5 class="card-title">${phone.brand}</h5>
+                 <h5 class="card-title">${phone.phone_name}</h5>
+                 <div class="d-grid gap-2 col-6 mx-auto">
+               <button onclick="mobileDetails('phone.slug')"class="btn btn-primary" type="button">Details</button>
+                </div>
+               </div>
+            </div>
+                 `;
         searchResult.appendChild(div);
     })
-
-
 }
