@@ -1,13 +1,18 @@
+// const displayspinner = spinner => {
+//     document.getElementById('spinner').style.display = spinner;
+// }
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
+    // displayspinner('block');
     searchField.value = "";
-    //error handle
+    //<----------------error handle--------------->
     if (searchText == "") {
         document.getElementById('error').style.display = "block";
     }
+
     else {
-        // load  search data 
+        //<----------------load  search data ------------>
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
@@ -15,22 +20,26 @@ const searchMobile = () => {
         document.getElementById('error').style.display = "none";
     }
 }
-//show result in search bar
+//<----------------show result in search bar--------------->
+
 const displaySearchResult = (phones) => {
-    // console.log(phones);
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = "";
-
+    //     alert("Sorry!! no phone found");
     // console.log(searchResult);
     // const first20Data = phones.slice(0, 20);
     // console.log(first20Data);
-    phones.forEach(phone => {
-        // console.log(phone);
-
-        //Phone picture show with bootstrap crad
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
+    //<--------------------------error handle--------------------->
+    if (phones == 0) {
+        alert("Sorry!! no phone found");
+    }
+    else {
+        phones.forEach(phone => {
+            // console.log(phone);
+            // <--------------Phone picture show with bootstrap crad--------->
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = `
           <div class="card h-100 mb-3 w-75 mx-auto">
              <img src="${phone.image}" class="card-img-top" alt="...">
              <div class="card-body">
@@ -42,27 +51,28 @@ const displaySearchResult = (phones) => {
                </div>
             </div>
                  `;
-        searchResult.appendChild(div);
-    })
+            searchResult.appendChild(div);
+        });
+        // displayspinner('none');
+    }
 }
-// load phone data
+//<--------------------load phone data---------------->
 const loadPhoneData = (mobileId) => {
     // console.log(mobileId);
     const url = `https://openapi.programming-hero.com/api/phone/${mobileId}`;
     fetch(url)
         .then(res => res.json())
         .then(loadPhoneData => displayMobileDetails(loadPhoneData.data));
-
 }
 
-//display single mobile details 
+//<------------display single mobile details ----------------->
 const displayMobileDetails = (mobiledetails) => {
     // console.log(mobiledetails);
     const phoneDetails = document.getElementById('singlephone-details')
     const div = document.createElement('div');
     div.classList.add('card');
     phoneDetails.innerHTML = "";
-    // dinamically display single mobile feature details 
+    //< -------------dinamically display single mobile feature details --------->
     div.innerHTML = `
     <div class="card h-100 mb-3 w-50 mx-auto">
     <img src="${mobiledetails.image}" class="card-img-top" alt="...">
