@@ -2,18 +2,27 @@ const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = "";
+    if (searchText == "") {
+        document.getElementById('error').style.display = "block";
+    }
+    else {
+        // load  search data 
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(loadsearchdata => displaySearchResult(loadsearchdata.data));
+        document.getElementById('error').style.display = "none";
 
-    // load  search data 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(loadsearchdata => displaySearchResult(loadsearchdata.data));
+    }
+
 }
 //show result in search bar
 
 const displaySearchResult = (phones) => {
     // console.log(phones);
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = "";
+
     // console.log(searchResult);
     // const first20Data = phones.slice(0, 20);
     // console.log(first20Data);
@@ -49,11 +58,14 @@ const loadPhoneData = (mobileId) => {
 
 
 }
+//display single mobile details 
+
 const displayMobileDetails = (mobiledetails) => {
     // console.log(mobiledetails);
     const phoneDetails = document.getElementById('singlephone-details')
     const div = document.createElement('div');
     div.classList.add('card');
+    // dinamically display single mobile feature details 
     div.innerHTML = `
     <div class="card h-100 mb-3 w-50 mx-auto">
     <img src="${mobiledetails.image}" class="card-img-top" alt="...">
