@@ -2,6 +2,7 @@ const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = "";
+    //error handle
     if (searchText == "") {
         document.getElementById('error').style.display = "block";
     }
@@ -12,12 +13,9 @@ const searchMobile = () => {
             .then(res => res.json())
             .then(loadsearchdata => displaySearchResult(loadsearchdata.data));
         document.getElementById('error').style.display = "none";
-
     }
-
 }
 //show result in search bar
-
 const displaySearchResult = (phones) => {
     // console.log(phones);
     const searchResult = document.getElementById('search-result');
@@ -55,16 +53,15 @@ const loadPhoneData = (mobileId) => {
         .then(res => res.json())
         .then(loadPhoneData => displayMobileDetails(loadPhoneData.data));
 
-
-
 }
-//display single mobile details 
 
+//display single mobile details 
 const displayMobileDetails = (mobiledetails) => {
     // console.log(mobiledetails);
     const phoneDetails = document.getElementById('singlephone-details')
     const div = document.createElement('div');
     div.classList.add('card');
+    phoneDetails.innerHTML = "";
     // dinamically display single mobile feature details 
     div.innerHTML = `
     <div class="card h-100 mb-3 w-50 mx-auto">
@@ -89,4 +86,5 @@ const displayMobileDetails = (mobiledetails) => {
 </div>
     `;
     phoneDetails.appendChild(div);
+
 }
