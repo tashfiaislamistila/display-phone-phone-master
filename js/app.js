@@ -1,6 +1,4 @@
-// const displayspinner = spinner => {
-//     document.getElementById('spinner').style.display = spinner;
-// }
+
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -53,7 +51,7 @@ const displaySearchResult = (phones) => {
                  `;
             searchResult.appendChild(div);
         });
-        // displayspinner('none');
+
     }
 }
 //<-------------------------------load phone data ------------------------------------------------------------------------------------------->
