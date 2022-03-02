@@ -1,21 +1,15 @@
-// const displayspinner = spinner => {
-//     document.getElementById('spinner').style.display = spinner;
-// }
+
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // displayspinner('block');
     searchField.value = "";
-
     //<---------------error handle ------------------------------------------------------------------------------>
 
     if (searchText == "") {
         document.getElementById('error').style.display = "block";
     }
-
     else {
         //<----------------load search data -------------------------------------------------------------------------->
-
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
@@ -28,20 +22,15 @@ const searchMobile = () => {
 const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = "";
-    // console.log(searchResult);
-    // const first20Data = phones.slice(0, 20);
-    // console.log(first20Data);
-
+    const first20Data = phones.slice(0, 20);
+    console.log(first20Data);
     //<-------------------------error handle with alert function -------------------------------------------------------------------------------------->
     if (phones == 0) {
         alert("Sorry!! no phone found");
     }
     else {
-        phones.forEach(phone => {
-            // console.log(phone);
-
+        first20Data.forEach(phone => {
             // <-----------------Phone picture show with bootstrap crad --------------------------------------------------------------------------------->
-
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -77,40 +66,38 @@ const displayMobileDetails = (mobiledetails) => {
     const div = document.createElement('div');
     div.classList.add('card');
     phoneDetails.innerHTML = "";
-
     //< ---------dinamically display single mobile feature details and also releaseDate --------------------------------------------------------------------------------------->
     div.innerHTML = `
-    <div class="card h-100 mb-3 w-50 mx-auto">
-    <img src="${mobiledetails.image}" class="card-img-top" alt="...">
+    <div class="card h-100 mb-3 mx-auto">
+    <img src="${mobiledetails.image}" class="w-75 card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title"><span class="fw-bold">Mobile Name:</span> ${mobiledetails.name}</h5>
         <h5 class="card-title"><span class="fw-bold">Brand Name:</span> ${mobiledetails.brand}</h5>
             <ul class="list-group">
             <li class="list-group-item"><span class="fw-bolder">Main Features </span></li>
-  <li class="list-group-item"><span class="fw-bold">Storage:</span> ${mobiledetails.mainFeatures.storage}</li>
-  <li class="list-group-item list-group-item-primary"><span class="fw-bold">DisplaySize:</span> ${mobiledetails.mainFeatures.displaySize}</li>
-  <li class="list-group-item list-group-item-secondary"><span class="fw-bold">ChipSet:</span> ${mobiledetails.mainFeatures.chipSet}</li>
-  <li class="list-group-item list-group-item-success"><span class="fw-bold">Memory:</span> ${mobiledetails.mainFeatures.memory}</li>
-  <li class="list-group-item"><span class="fw-bolder">Sensors </span></li>
-  <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[0]}</li>
-  <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[1]}</li>
-  <li class="list-group-item list-group-item-info"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[2]}</li>
-  <li class="list-group-item list-group-item-success"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[3]}</li>
-  <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[4]}</li>
-  <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[5]}</li>
-  <li class="list-group-item"><span class="fw-bolder">Others </span></li>
-  <li class="list-group-item list-group-item-warning"><span class="fw-bold">WLAN:</span>${mobiledetails.others.WLAN}</li>
-  <li class="list-group-item list-group-item-info"><span class="fw-bold">Bluetooth:</span>${mobiledetails.others.Bluetooth}</li>
-  <li class="list-group-item list-group-item-light"><span class="fw-bold">GPS:</span>${mobiledetails.others.GPS}</li>
-  <li class="list-group-item list-group-item-dark"><span class="fw-bold">NFC:</span>${mobiledetails.others.NFC}</li>
-  <li class="list-group-item list-group-item-primary"><span class="fw-bold">Radio:</span> ${mobiledetails.others.Radio}</li>
-  <li class="list-group-item list-group-item-success"><span class="fw-bold">USB:</span> ${mobiledetails.others.USB}</li>
-  <li class="list-group-item"><span class="fw-bolder">Release Date </span></li>
-  <li class="list-group-item list-group-item-danger"><span class="fw-bold">ReleaseDate:</span> ${mobiledetails.releaseDate ? mobiledetails.releaseDate : "No release date found"}</li>
+     <li class="list-group-item"><span class="fw-bold">Storage:</span> ${mobiledetails.mainFeatures.storage}</li>
+     <li class="list-group-item list-group-item-primary"><span class="fw-bold">DisplaySize:</span> ${mobiledetails.mainFeatures.displaySize}</li>
+     <li class="list-group-item list-group-item-secondary"><span class="fw-bold">ChipSet:</span> ${mobiledetails.mainFeatures.chipSet}</li>
+     <li class="list-group-item list-group-item-success"><span class="fw-bold">Memory:</span> ${mobiledetails.mainFeatures.memory}</li>
+     <li class="list-group-item"><span class="fw-bolder">Sensors </span></li>
+     <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[0]}</li>
+      <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[1]}</li>
+      <li class="list-group-item list-group-item-info"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[2]}</li>
+      <li class="list-group-item list-group-item-success"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[3]}</li>
+     <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[4]}</li>
+      <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[5]}</li>
+      <li class="list-group-item"><span class="fw-bolder">Others </span></li>
+    <li class="list-group-item list-group-item-warning"><span class="fw-bold">WLAN:</span>${mobiledetails.others.WLAN ? mobiledetails.others.WLAN : "No WLAN found"}</li>
+      <li class="list-group-item list-group-item-info"><span class="fw-bold">Bluetooth:</span>${mobiledetails.others.Bluetooth ? mobiledetails.others.Bluetooth : "No Bluetooth found"}</li>
+     <li class="list-group-item list-group-item-light"><span class="fw-bold">GPS:</span>${mobiledetails.others.GPS ? mobiledetails.others.GPS : "No GPS found"}</li>
+     <li class="list-group-item list-group-item-dark"><span class="fw-bold">NFC:</span>${mobiledetails.others.NFC ? mobiledetails.others.NFC : "No NFC found"}</li>
+    <li class="list-group-item list-group-item-primary"><span class="fw-bold">Radio:</span> ${mobiledetails.others.Radio ? mobiledetails.others.Radio : "No Radio found"}</li>
+    <li class="list-group-item list-group-item-success"><span class="fw-bold">USB:</span> ${mobiledetails.others.USB ? mobiledetails.others.USB : "No USB found"}</li>
+     <li class="list-group-item"><span class="fw-bolder">Release Date </span></li>
+     <li class="list-group-item list-group-item-danger"><span class="fw-bold">ReleaseDate:</span> ${mobiledetails.releaseDate ? mobiledetails.releaseDate : "No release date found"}</li>
 </ul>
     </div>
 </div>
     `;
     phoneDetails.appendChild(div);
-
 }
