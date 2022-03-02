@@ -74,7 +74,7 @@ const displayMobileDetails = (mobiledetails) => {
     //< ---------dinamically display single mobile feature details and also releaseDate --------------------------------------------------------------------------------------->
     div.innerHTML = `
     <div class="card h-100 mb-3 mx-auto">
-    <img src="${mobiledetails.image}" class="w-75 card-img-top" alt="...">
+    <img src="${mobiledetails.image}" class="w-25 card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title"><span class="fw-bold">Mobile Name:</span> ${mobiledetails.name}</h5>
         <h5 class="card-title"><span class="fw-bold">Brand Name:</span> ${mobiledetails.brand}</h5>
