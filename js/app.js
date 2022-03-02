@@ -1,9 +1,10 @@
 
-
+// ---------------------------------search field call -------------------------
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = "";
+    //<--------------------------------spinner show------------------------>
     document.getElementById('spinner').style.display = "block";
     //<---------------error handle ------------------------------------------------------------------------------>
     if (searchText == "") {
@@ -55,6 +56,7 @@ const displaySearchResult = (phones) => {
                  `;
             searchResult.appendChild(div);
         });
+        //<--------------------------------spinner closed------------------------>
         document.getElementById('spinner').style.display = "none";
     }
 }
