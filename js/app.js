@@ -6,13 +6,16 @@ const searchMobile = () => {
     const searchText = searchField.value;
     // displayspinner('block');
     searchField.value = "";
-    //<----------------error handle--------------->
+
+    //<---------------error handle ------------------------------------------------------------------------------>
+
     if (searchText == "") {
         document.getElementById('error').style.display = "block";
     }
 
     else {
-        //<----------------load  search data ------------>
+        //<----------------load search data -------------------------------------------------------------------------->
+
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
@@ -20,7 +23,7 @@ const searchMobile = () => {
         document.getElementById('error').style.display = "none";
     }
 }
-//<----------------show result in search bar--------------->
+//<-------------show result in search bar -------------------------------------------------------------------------------------->
 
 const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
@@ -29,14 +32,16 @@ const displaySearchResult = (phones) => {
     // const first20Data = phones.slice(0, 20);
     // console.log(first20Data);
 
-    //<--------------------------error handle with alert function--------------------->
+    //<-------------------------error handle with alert function -------------------------------------------------------------------------------------->
     if (phones == 0) {
         alert("Sorry!! no phone found");
     }
     else {
         phones.forEach(phone => {
             // console.log(phone);
-            // <--------------Phone picture show with bootstrap crad--------->
+
+            // <-----------------Phone picture show with bootstrap crad --------------------------------------------------------------------------------->
+
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -56,7 +61,8 @@ const displaySearchResult = (phones) => {
         // displayspinner('none');
     }
 }
-//<--------------------load phone data---------------->
+//<-------------------------------load phone data ------------------------------------------------------------------------------------------->
+
 const loadPhoneData = (mobileId) => {
     // console.log(mobileId);
     const url = `https://openapi.programming-hero.com/api/phone/${mobileId}`;
@@ -64,14 +70,15 @@ const loadPhoneData = (mobileId) => {
         .then(res => res.json())
         .then(loadPhoneData => displayMobileDetails(loadPhoneData.data));
 }
-//<------------display single mobile details ----------------->
+//<---------------------display single mobile details ------------------------------------------------------------------------------------------->
 const displayMobileDetails = (mobiledetails) => {
     // console.log(mobiledetails);
     const phoneDetails = document.getElementById('singlephone-details')
     const div = document.createElement('div');
     div.classList.add('card');
     phoneDetails.innerHTML = "";
-    //< -------------dinamically display single mobile feature details --------->
+
+    //< ---------dinamically display single mobile feature details and also releaseDate --------------------------------------------------------------------------------------->
     div.innerHTML = `
     <div class="card h-100 mb-3 w-50 mx-auto">
     <img src="${mobiledetails.image}" class="card-img-top" alt="...">
@@ -79,7 +86,7 @@ const displayMobileDetails = (mobiledetails) => {
         <h5 class="card-title"><span class="fw-bold">Mobile Name:</span> ${mobiledetails.name}</h5>
         <h5 class="card-title"><span class="fw-bold">Brand Name:</span> ${mobiledetails.brand}</h5>
             <ul class="list-group">
-            <li class="list-group-item"><span class="fw-bolder">MainFeatures </span></li>
+            <li class="list-group-item"><span class="fw-bolder">Main Features </span></li>
   <li class="list-group-item"><span class="fw-bold">Storage:</span> ${mobiledetails.mainFeatures.storage}</li>
   <li class="list-group-item list-group-item-primary"><span class="fw-bold">DisplaySize:</span> ${mobiledetails.mainFeatures.displaySize}</li>
   <li class="list-group-item list-group-item-secondary"><span class="fw-bold">ChipSet:</span> ${mobiledetails.mainFeatures.chipSet}</li>
@@ -98,6 +105,8 @@ const displayMobileDetails = (mobiledetails) => {
   <li class="list-group-item list-group-item-dark"><span class="fw-bold">NFC:</span>${mobiledetails.others.NFC}</li>
   <li class="list-group-item list-group-item-primary"><span class="fw-bold">Radio:</span> ${mobiledetails.others.Radio}</li>
   <li class="list-group-item list-group-item-success"><span class="fw-bold">USB:</span> ${mobiledetails.others.USB}</li>
+  <li class="list-group-item"><span class="fw-bolder">Release Date </span></li>
+  <li class="list-group-item list-group-item-danger"><span class="fw-bold">ReleaseDate:</span> ${mobiledetails.releaseDate ? mobiledetails.releaseDate : "No release date found"}</li>
 </ul>
     </div>
 </div>
