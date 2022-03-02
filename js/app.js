@@ -4,7 +4,7 @@ const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = "";
-
+    document.getElementById('spinner').style.display = "block";
     //<---------------error handle ------------------------------------------------------------------------------>
     if (searchText == "") {
         document.getElementById('error').style.display = "block";
@@ -22,6 +22,7 @@ const searchMobile = () => {
 
 const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
+
     searchResult.textContent = "";
     // console.log(searchResult);
     const first20Data = phones.slice(0, 20);
@@ -36,6 +37,7 @@ const displaySearchResult = (phones) => {
 
         first20Data.forEach(phone => {
             // console.log(phone);
+
             // <-----------------Phone picture show with bootstrap crad --------------------------------------------------------------------------------->
             const div = document.createElement('div');
             div.classList.add('col');
@@ -53,7 +55,7 @@ const displaySearchResult = (phones) => {
                  `;
             searchResult.appendChild(div);
         });
-
+        document.getElementById('spinner').style.display = "none";
     }
 }
 //<-------------------------------load phone data ------------------------------------------------------------------------------------------->
