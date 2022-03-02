@@ -25,11 +25,11 @@ const searchMobile = () => {
 const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = "";
-    //     alert("Sorry!! no phone found");
     // console.log(searchResult);
     // const first20Data = phones.slice(0, 20);
     // console.log(first20Data);
-    //<--------------------------error handle--------------------->
+
+    //<--------------------------error handle with alert function--------------------->
     if (phones == 0) {
         alert("Sorry!! no phone found");
     }
@@ -64,7 +64,6 @@ const loadPhoneData = (mobileId) => {
         .then(res => res.json())
         .then(loadPhoneData => displayMobileDetails(loadPhoneData.data));
 }
-
 //<------------display single mobile details ----------------->
 const displayMobileDetails = (mobiledetails) => {
     // console.log(mobiledetails);
@@ -80,11 +79,19 @@ const displayMobileDetails = (mobiledetails) => {
         <h5 class="card-title"><span class="fw-bold">Mobile Name:</span> ${mobiledetails.name}</h5>
         <h5 class="card-title"><span class="fw-bold">Brand Name:</span> ${mobiledetails.brand}</h5>
             <ul class="list-group">
+            <li class="list-group-item"><span class="fw-bolder">MainFeatures </span></li>
   <li class="list-group-item"><span class="fw-bold">Storage:</span> ${mobiledetails.mainFeatures.storage}</li>
   <li class="list-group-item list-group-item-primary"><span class="fw-bold">DisplaySize:</span> ${mobiledetails.mainFeatures.displaySize}</li>
   <li class="list-group-item list-group-item-secondary"><span class="fw-bold">ChipSet:</span> ${mobiledetails.mainFeatures.chipSet}</li>
   <li class="list-group-item list-group-item-success"><span class="fw-bold">Memory:</span> ${mobiledetails.mainFeatures.memory}</li>
-  <li class="list-group-item list-group-item-danger"><span class="fw-bold">Sensors:</span>${mobiledetails.mainFeatures.sensors}</li>
+  <li class="list-group-item"><span class="fw-bolder">Sensors </span></li>
+  <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[0]}</li>
+  <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[1]}</li>
+  <li class="list-group-item list-group-item-info"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[2]}</li>
+  <li class="list-group-item list-group-item-success"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[3]}</li>
+  <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[4]}</li>
+  <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[5]}</li>
+  <li class="list-group-item"><span class="fw-bolder">Others </span></li>
   <li class="list-group-item list-group-item-warning"><span class="fw-bold">WLAN:</span>${mobiledetails.others.WLAN}</li>
   <li class="list-group-item list-group-item-info"><span class="fw-bold">Bluetooth:</span>${mobiledetails.others.Bluetooth}</li>
   <li class="list-group-item list-group-item-light"><span class="fw-bold">GPS:</span>${mobiledetails.others.GPS}</li>
