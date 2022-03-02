@@ -1,4 +1,3 @@
-
 // ---------------------------------search field call -------------------------
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
@@ -25,9 +24,7 @@ const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
 
     searchResult.textContent = "";
-    // console.log(searchResult);
     const first20Data = phones.slice(0, 20);
-    // console.log(first20Data);
     const singlePhoneDetails = document.getElementById('singlephone-details')
     singlePhoneDetails.textContent = "";
     //<-------------------------error handle with alert function -------------------------------------------------------------------------------------->
@@ -37,8 +34,6 @@ const displaySearchResult = (phones) => {
     else {
 
         first20Data.forEach(phone => {
-            // console.log(phone);
-
             // <-----------------Phone picture show with bootstrap crad --------------------------------------------------------------------------------->
             const div = document.createElement('div');
             div.classList.add('col');
@@ -62,7 +57,6 @@ const displaySearchResult = (phones) => {
 }
 //<-------------------------------load phone data ------------------------------------------------------------------------------------------->
 const loadPhoneData = (mobileId) => {
-    // console.log(mobileId);
     const url = `https://openapi.programming-hero.com/api/phone/${mobileId}`;
     fetch(url)
         .then(res => res.json())
@@ -70,7 +64,6 @@ const loadPhoneData = (mobileId) => {
 }
 //<---------------------display single mobile details ------------------------------------------------------------------------------------------->
 const displayMobileDetails = (mobiledetails) => {
-    // console.log(mobiledetails);
     const phoneDetails = document.getElementById('singlephone-details')
     const div = document.createElement('div');
     div.classList.add('card');
