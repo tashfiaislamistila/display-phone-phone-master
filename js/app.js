@@ -92,15 +92,15 @@ const displayMobileDetails = (mobiledetails) => {
      <li class="list-group-item list-group-item-danger"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[4]}</li>
       <li class="list-group-item list-group-item-warning"><span class="fw-bold"></span>${mobiledetails.mainFeatures.sensors[5]}</li>
       <li class="list-group-item"><span class="fw-bolder">Others </span></li>
-    <li class="list-group-item list-group-item-warning"><span class="fw-bold">WLAN:</span>${mobiledetails.others.WLAN ? mobiledetails.others.WLAN : "No WLAN found"}</li>
-      <li class="list-group-item list-group-item-info"><span class="fw-bold">Bluetooth:</span>${mobiledetails.others.Bluetooth ? mobiledetails.others.Bluetooth : "No Bluetooth found"}</li>
-         <li class="list-group-item list-group-item-light"><span class="fw-bold">GPS:</span>${mobiledetails.others.GPS ? mobiledetails.others.GPS : "No GPS found"}</li>
-          <li class="list-group-item list-group-item-dark"><span class="fw-bold">NFC:</span>${mobiledetails.others.NFC ? mobiledetails.others.NFC : "No NFC found"}</li>
-         <li class="list-group-item list-group-item-primary"><span class="fw-bold">Radio:</span> ${mobiledetails.others.Radio ? mobiledetails.others.Radio : "No Radio found"}</li>
+    <li class="list-group-item list-group-item-warning"><span class="fw-bold">WLAN:</span>${mobiledetails.others?.WLAN ? mobiledetails.others.WLAN : " No WLAN found "}</li>
+      <li class="list-group-item list-group-item-info"><span class="fw-bold">Bluetooth:</span>${mobiledetails.others?.Bluetooth ? mobiledetails.others.Bluetooth : " No Bluetooth found "}</li>
+         <li class="list-group-item list-group-item-light"><span class="fw-bold">GPS:</span>${mobiledetails.others?.GPS ? mobiledetails.others.GPS : " No GPS found "}</li>
+          <li class="list-group-item list-group-item-dark"><span class="fw-bold">NFC:</span>${mobiledetails.others?.NFC ? mobiledetails.others.NFC : " No NFC found "}</li>
+         <li class="list-group-item list-group-item-primary"><span class="fw-bold">Radio:</span> ${mobiledetails.others?.Radio ? mobiledetails.others.Radio : " No Radio found "}</li>
           <li class="list-group-item list-group-item-success"><span class="fw-bold">USB:</span>
-          ${mobiledetails.others.USB ? mobiledetails.others.USB : "No USB found"}</li>
+          ${mobiledetails.others?.USB ? mobiledetails.others.USB : " No USB found "}</li>
         <li class="list-group-item"><span class="fw-bolder">Release Date </span></li>
-        <li class="list-group-item list-group-item-danger"><span class="fw-bold">ReleaseDate:</span> ${mobiledetails.releaseDate ? mobiledetails.releaseDate : "No release date found"}</li>
+        <li class="list-group-item list-group-item-danger"><span class="fw-bold">ReleaseDate:</span> ${mobiledetails.releaseDate ? mobiledetails.releaseDate : " No release date found "}</li>
 </ul>
     </div>
 </div>
